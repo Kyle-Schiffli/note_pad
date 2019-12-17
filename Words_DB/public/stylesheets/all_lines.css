@@ -1,0 +1,26 @@
+body {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+}
+
+table {
+    text-align: center;
+    background-color: #A9CCE3;
+    width:100%;
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+.section1 {
+    background-color: #A9CCE3;
+    width: 100%;
+    font-family: 'Special Elite', cursive;
+    display: inline-block;
+    
+    
+}

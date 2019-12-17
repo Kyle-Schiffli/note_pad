@@ -1,0 +1,38 @@
+<h3>Word:</h3><h2><%= @query_word %></h2>
+<h3># of Syllables:</h3><h2><%= @syllable %></h2>
+<h3>Rhyme Group:</h3><h2><%= @rhyme %></h2>
+
+
+<form action="/word_search" method="post">
+  Search For A Word<br>
+  <input type="text" name="word" value=""><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+
+<div>
+      <h2>Words In Modify List: <%= @modifier_list.count %></h2>
+      <h2><%= @modifier_words %></h2>
+      
+      </form>
+      <form action="/clear_modify" method="post">
+      <input type="submit" name="clear_modify" value="clear">
+      </form>
+</div>
+
+<form action="/modify" method="post">
+  Modify Word<br>
+  <input type="text" name="word" value=""><br>
+  Syllable<br>
+  <input type="text" name="syllable" value="0"><br>
+  Rhyme<br>
+  <input type="text" name="rhyme" value="0"><br>
+  
+  <input type="submit" value="Submit">
+  
+  (WARNING: SUBMIT WILL ALTER DB!)
+</form>
+
+</form>
+      

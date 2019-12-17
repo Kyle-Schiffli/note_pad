@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Note Pad</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/note2.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">
+</head>
+
+<div class="whole-page">
+  <div class="left-container">
+    <div class="line-display shadow">
+        <%@current_session.each do |line| %>
+      <ul>
+        <li><p><%= line[2] %></p></li> <!--line-->
+      </ul>
+        <% end %>
+    </div>
+    <div class="line-input shadow">
+        <form action="/note_pad" method="post" autocomplete="off">
+        <input id="input" type="text" name="line" value="" autofocus >
+        <input id="sub-button" type="submit" value="Submit">
+        </form>
+        
+        <form action="/note_pad" method="post">
+        <input id="sub-button" type="submit" name="clear_session" value="clear">
+        </form>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="rhyme-box shadow">
+      <div class="title-box">
+        <h2 class="float-left">Rhyme A</h2>
+        <h2 class="float-right"><%= @last_rhyme %></h2>
+      </div>
+      <p><%= @last_rhyme_array %></p>
+    </div>
+    <div class="rhyme-box shadow">
+      <div class="title-box">
+        <h2 class="float-left">Rhyme B</h2>
+        <h2 class="float-right"><%= @second_last_rhyme %></h2>
+      </div>
+      <p><%= @second_rhyme_array %></p>
+    </div>
+    <div class="rhyme-box shadow">
+      <div class="title-box">
+        <h2 class="float-left">Rhyme C</h2>
+        <h2 class="float-right"><%= @third_last_rhyme %></h2>
+      </div>
+      <p><%= @third_rhyme_array %> </p>
+    </div>
+    <div class="syllables-box-background shadow">
+      <div class="syllables-box shadow">
+        <div class="title-box">
+          <h2 class="float-left">Syllables</h2>
+        </div>
+        <p><%= @syallable_display %></p>
+      </div>
+      <div class="syllables-box shadow">
+        <div class="title-box">
+          <h2 class="float-left">Random</h2>
+        </div>
+        <p>Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word</p>
+      </div>
+    </div>
+    <div class="search-input shadow">
+      <h2>Search</h2>
+    </div>
+    <div class="search-input shadow">
+      <h2>Search</h2>
+    </div>
+    <div class="search-input shadow">
+      <h2>Search</h2>
+    </div>
+  </div>
+</div>

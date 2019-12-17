@@ -1,0 +1,59 @@
+
+
+body {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+}
+
+table {
+    
+    background-color: #A9CCE3;
+    width:100%;
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+}
+
+.display {
+    width: 100%;
+    border: 2px solid #032336;
+}
+
+.section1 {
+    background-color: #A9CCE3;
+    width: 65%;
+    font-family: 'Special Elite', cursive;
+    display: inline-block;
+    overflow: auto;
+    height: 50%;
+    
+}
+
+
+.section2 {
+    background-color: #A9CCE3;
+    width: 34%;
+    font-family: 'Special Elite', cursive;
+    display: inline-block;
+    vertical-align: top;
+    height: 50%;
+    
+}
+
+
+
+#note-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+#word-search {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+ 

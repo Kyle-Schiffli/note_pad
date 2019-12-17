@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Note Pad</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/note.css">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    
+  </head>
+  <body>
+    
+    <!-- display  -->
+    <span>
+      <div class="section1">
+        
+        <form action="/note_pad" method="post" id="lines_form">
+          
+        <table>
+          <tr>
+            <th></th>
+            <th>Line</th>
+            <th>Syllable</th> 
+          </tr>
+          <%@current_session.each do |line| %>
+            <tr>
+              <td><input type="checkbox" name="subject[]" value="<%= line[0]%>"></td>
+              <td><%= line[2] %></td>
+              <td><%= line[4] %></td> 
+            </tr>
+          <% end %>
+        </table>
+        
+      </div>
+      <!-- rhyme resource display -->
+      <div class="section2">
+        <table>
+          <tr>
+            <th>First</th>
+            <th>Second</th> 
+            <th>Search</th>
+          </tr>
+          <% Array(0..9).each do |index| %>
+            <tr>
+              <td><%= @second_rhyme_array[index] %></td>
+              <td><%= @last_rhyme_array[index] %></td>
+              <td>search</td>
+            </tr>
+            <% end %>
+        </table>
+      
+      </form>
+      <form action="/note_pad/shuffle" method="post">
+      <input type="submit" name="shuffle" value="shuffle">
+      </form>
+      
+      </div>
+      </span>
+    <!-- end rhyme resource display -->
+    <!-- delete submit for check boxes (outside of form) -->
+    <div>
+      <input form="lines_form" type="submit" name="delete_lines" value="Delete" class="word_search_form">
+      
+        <form action="/note_pad" method="post" autocomplete="off">
+          Word Search<br>
+          <div>
+            <input id="word_search" type="text" name="word_search" value="<%=@monkey_test %>"><br>
+             <%=@monkey_test %>
+          </div>
+        </form>
+      
+      
+      </form>
+      
+    </div>
+    
+    <!-- display end -->
+    <!-- input form -->
+    <div>
+      </form>
+      <form action="/note_pad" method="post" autocomplete="off">
+        Start Writing<br>
+      <input id="note-input" type="text" name="line" value="" autofocus ><br>
+  
+      <input type="submit" value="Submit">
+      </form>
+      
+      
+      
+      <form action="/note_pad" method="post">
+      <input type="submit" name="clear_session" value="clear">
+      </form>
+      <form action="/note_pad" method="post">
+      <input type="submit" name="save_all" value="save">
+      </form>
+      
+    </div>
+    <!-- input form end -->
+  
+  </body>
+</html>

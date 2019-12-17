@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All Lines</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/all_lines.css">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    
+  </head>
+  <body>
+    <span>
+        Sort By:
+          <a href="/all_lines/end_rhyme">Rhyme</a>
+          <a> - </a>
+          <a href="/all_lines/syllable_count">Syllable Count</a>
+          <a> - </a>
+          <a href="/all_lines">Old To New</a>
+          <a> - </a>
+          <a href="/all_lines/new">New To Old</a>
+    </span>
+    <!-- display  -->
+    <span>
+      <div class="section1">
+        
+        <table>
+          <tr>
+            <th># </th>
+            <th>Line</th>
+            <th>Count</th> 
+            <th>Rhyme</th>
+            <th>Syllables</th> 
+          </tr>
+          
+          <% count = 1 %>
+          <%@current_session.each do |line| %>
+            <tr>
+              <td><%= count %></td>
+              <td><%= line[2] %></td>
+              <td><%= line[5] %></td> 
+              <td><%= line[3] %></td>
+              <td><%= line[4] %></td> 
+            </tr>
+            <% count+= 1 %>
+          <% end %>
+        </table>
+      </div>
+      </span>
+  </body>
+</html>

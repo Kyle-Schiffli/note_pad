@@ -1,0 +1,18 @@
+
+<form action="/note_pad" method="post">
+  Start Writing<br>
+  <input type="text" name="line" value=""><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<% @display_array.each do |line| %>
+    
+<ul>
+  
+<li>
+<h3><%= line %> </h3>
+</li>
+</ul>
+
+<% end %>

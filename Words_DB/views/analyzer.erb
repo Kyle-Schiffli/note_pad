@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Note Pad</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/note_pad.css">
+  </head>
+  <body>
+   
+  <form action="/analyzer" method="post">
+  Analyze A Song<br>
+  <input type="text" name="analyzer_input" value=""><br>
+  
+  <input type="submit" value="Submit">
+  </form>
+   
+   
+   <div>
+     <p> <%= @word_array %> </p>
+   </div>
+   
+  </body>
+</html>

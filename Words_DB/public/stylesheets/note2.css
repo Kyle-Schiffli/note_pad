@@ -156,6 +156,18 @@ input{
   margin-top: 10px;
 }
 
+.syllables-box p{
+  animation-name: example;
+  animation-duration: 60s;
+  white-space: nowrap;
+}
+
+@keyframes example {
+from {margin-left: 270em;}
+to {margin-left: -40em;}
+}
+
+
 .search-input {
   background-color: #E9E9D8;
   position:relative;

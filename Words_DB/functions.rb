@@ -49,6 +49,14 @@ class Database
     @words.exec(sql)
   end
   
+  def self.random_words(number = 1)
+    sql = "SELECT * FROM words"
+          
+    @result = (@words.exec(sql)).column_values(1).sample(number)
+    @result
+
+  end
+
   def self.find_all_rhymes(rhyme_group)
     sql = "SELECT * FROM words WHERE rhyme = $1"
     @result = @words.exec_params(sql, [rhyme_group]).column_values(1)
@@ -141,10 +149,10 @@ helpers do
     result
   end
   
-  def random_word()
+  def random_word(number = 1)
     sql = "SELECT rhyme FROM words GROUP BY rhyme ORDER BY rhyme ASC"
     random_group = Database.query(sql).values.flatten.sample
-    random_rhyme = Database.find_all_rhymes(random_group).sample
+    random_rhyme = Database.find_all_rhymes(random_group).sample(number)
     return random_rhyme
   end
   

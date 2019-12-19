@@ -139,7 +139,7 @@ input{
   background-color: #948C66;
   position:relative;
   display: inline-block;
-  height: 57.5%;
+  height: 15%;
   width: 96%;
   margin-left:10px;
   margin-top: 10px;
@@ -150,7 +150,7 @@ input{
   position:relative;
   display: inline-block;
   overflow: hidden;
-  height: 93%;
+  height: 60%;
   width: 47.5%;
   margin-left:10px;
   margin-top: 10px;
@@ -158,13 +158,13 @@ input{
 
 .syllables-box p{
   animation-name: example;
-  animation-duration: 60s;
+  animation-duration: 90s;
   white-space: nowrap;
 }
 
 @keyframes example {
 from {margin-left: 270em;}
-to {margin-left: -40em;}
+to {margin-left: -200em;}
 }
 
 

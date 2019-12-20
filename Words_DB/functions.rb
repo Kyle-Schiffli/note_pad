@@ -124,16 +124,25 @@ helpers do
     array.inject(:+) + count
   end
   
-  def analyzer_breakdown(input)
+  def analyzer_breakdown_count(input)
     filtered = input.delete(",.!?\":;()")
     array = filtered.split(" ").map {|word| word.downcase}
     hash = {}
     
     array.uniq.each do |word|
-      hash[word] = array.count(word)
+      hash[word] = [array.count(word)]
     end
     
     hash
+  end
+
+  def analyzer_breakdown_rhyme(hash)
+    hash.each {|key, value| 
+     result = Database.word_search(key)
+    #  hash[key][1] = result[2]
+    #  hash[key][2] = result[3]
+    }
+    return hash
   end
   
   def rhyme_array(rhyme_group)

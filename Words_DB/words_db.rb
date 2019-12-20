@@ -10,6 +10,7 @@ require_relative 'functions'
 configure do
   enable :reloader
   also_reload "/stylesheets/note.css"
+  also_reload "/functions.rb"
 end
 
 
@@ -62,7 +63,9 @@ get "/analyzer" do
   sql = "SELECT input_str FROM analyzer WHERE id = 1"
   @input = Database.query(sql).values[0][0]
   
-  @word_array = analyzer_breakdown(@input)
+  @word_hash= analyzer_breakdown_count(@input)
+  @word_hash = analyzer_breakdown_rhyme(@word_hash)
+
   
   
   

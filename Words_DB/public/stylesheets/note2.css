@@ -139,7 +139,7 @@ input{
   background-color: #948C66;
   position:relative;
   display: inline-block;
-  height: 15%;
+  height: 58%;
   width: 96%;
   margin-left:10px;
   margin-top: 10px;
@@ -150,21 +150,32 @@ input{
   position:relative;
   display: inline-block;
   overflow: hidden;
-  height: 60%;
+  height: 19%;
   width: 47.5%;
   margin-left:10px;
   margin-top: 10px;
 }
 
-.syllables-box p{
-  animation-name: example;
-  animation-duration: 90s;
+@keyframes left-ticker {
+  from {margin-left: 255m;}
+  to {margin-left: -300em;}
+  }
+
+@keyframes right-ticker {
+  from {margin-left: 260m;}
+  to {margin-left: -300em;}
+  }
+
+.syllables-box .left-ticker p{
+  animation-duration: 110s;
   white-space: nowrap;
+  animation-name: left-ticker;
 }
 
-@keyframes example {
-from {margin-left: 270em;}
-to {margin-left: -200em;}
+.syllables-box .right-ticker p{
+  animation-duration: 110s;
+  white-space: nowrap;
+  animation-name: right-ticker;
 }
 
 

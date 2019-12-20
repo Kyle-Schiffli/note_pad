@@ -166,7 +166,10 @@ get "/note_pad" do
   @last_rhyme_array = []
   @second_rhyme_array = []
   @third_rhyme_array = []
-  @syallable_display = Database.find_all_syllables(2).sample(100).join(" - ")
+  @syallable_display_1 = Database.find_all_syllables(1).sample(100).join(" - ")
+  @syallable_display_2 = Database.find_all_syllables(2).sample(100).join(" - ")
+
+
   @random_word_display = Database.random_words(100).join(" - ")
   
   if @lines.length > 0 

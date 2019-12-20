@@ -51,20 +51,36 @@
         </div>
         <p><%= @third_rhyme_array %> </p>
       </div>
-      <div id="left" class="syllables-box-background shadow">
+      <div class="syllables-box-background shadow">
         <div class="syllables-box shadow">
           <div class="title-box">
             <h2 class="float-left">Syllables</h2>
           </div>
-          <p><%= @syallable_display %></p>
+          <div class="left-ticker">
+            <p><%= @syallable_display_1%></p>
+          </div>
         </div>
+        
         <div class="syllables-box shadow">
           <div class="title-box">
             <h2 class="float-left">Random</h2>
           </div>
-          <p> <%= @random_word_display %> </p>
+          <div class="right-ticker">
+            <p> <%= @random_word_display %> </p>
+          </div>
         </div>
+
+        <div class="syllables-box shadow">
+          <div class="title-box">
+            <h2 class="float-left">Syllables</h2>
+          </div>
+          <div class="left-ticker">
+            <p><%= @syallable_display_2 %></p>
+          </div>
+        </div>
+
       </div>
+
       <div class="search-input shadow">
         <h2>Search</h2>
       </div>

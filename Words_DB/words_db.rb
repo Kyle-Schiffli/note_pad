@@ -46,6 +46,16 @@ get "/home" do
  erb :home
 end
 
+
+    #    #     #    #    #       #     # ####### ####### ######  
+   # #   ##    #   # #   #        #   #       #  #       #     # 
+  #   #  # #   #  #   #  #         # #       #   #       #     # 
+ #     # #  #  # #     # #          #       #    #####   ######  
+ ####### #   # # ####### #          #      #     #       #   #   
+ #     # #    ## #     # #          #     #      #       #    #  
+ #     # #     # #     # #######    #    ####### ####### #     # 
+                                                                 
+
 get "/analyzer" do
   sql = "SELECT input_str FROM analyzer WHERE id = 1"
   @input = Database.query(sql).values[0][0]

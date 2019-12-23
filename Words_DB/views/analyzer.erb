@@ -14,10 +14,37 @@
   <input type="submit" value="Submit">
   </form>
    
+  <div>
+  <p> <%= @input%> </p>
+</div>
+
+<br>
+<br>
    
    <div>
      <p> <%= @word_hash%> </p>
    </div>
+
+   <br>
+   <br>
+
+   <div>
+     <p> <%= @rhyme_groups%> </p>
+   </div>
+
+   <br>
+   <br>
+
+   <div class="analyzer">
+   <% @potential.each do |pair|%>
+      <ul> 
+          <li>
+            <p><%= pair %></p>
+          </li>
+      </ul>
+    <%end %>
+   </div>
+
    
   </body>
 </html>

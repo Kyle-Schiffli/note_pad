@@ -62,13 +62,32 @@ end
 get "/analyzer" do
   sql = "SELECT input_str FROM analyzer WHERE id = 1"
   @input = Database.query(sql).values[0][0]
-  
-  @word_hash= analyzer_breakdown_count(@input)
-  @word_hash = analyzer_breakdown_rhyme(@word_hash)
 
-  
-  
-  
+  song_size = analyzer_breakdown_size(@input)
+  percent = 0.05
+  @search_percent = (song_size.to_f * percent).round
+
+  @word_position = analyzer_breakdwon_position(@input) #hash word => [positions]
+  @word_hash= analyzer_breakdown_count(@input)
+  @word_hash = analyzer_breakdown_rhyme(@word_hash) #hash  word => [count, rhyme-group, syllables ]
+
+  @word_hash = @word_hash.merge!(@word_position) { |k, o, n| o + [n] } #hash  word => [count, rhyme-group, syllables, [positions] ]
+
+  @rhyme_groups = {} #hash  rhyme-group => [words]
+
+  @word_hash.each {|key, value|
+
+  if @rhyme_groups.has_key?(value[1])
+    @rhyme_groups[value[1]].push(key)
+  else
+    @rhyme_groups[value[1]] = [key]
+  end
+
+}
+
+ @potential = word_proximity(@input, @word_hash, @rhyme_groups, @search_percent)
+
+
 erb :analyzer, layout: :layout
 end
 
@@ -123,7 +142,6 @@ get "/word_search" do
   @modifier_words = @modifier_list.map do |array|
     array[0]
     end
-
   erb :word_search, layout: :layout  
 end
 
@@ -142,6 +160,7 @@ get "/word_search/:word" do
   #display of list to be modified
   sql = "SELECT * FROM modifier"
   @modifier_list = Database.query(sql).values
+
   @modifier_words = @modifier_list.map do |array|
     array[0]
     end

@@ -124,8 +124,37 @@ helpers do
     array.inject(:+) + count
   end
   
-  def analyzer_breakdown_count(input)
+  def input_filter(input)
     filtered = input.delete(",.!?\":;()")
+    return filtered
+  end
+
+  def analyzer_breakdown_size(input)
+    filtered = input_filter(input)
+    array = filtered.split(" ").map {|word| word.downcase}
+    size = array.length
+    return size
+
+  end
+
+  def analyzer_breakdwon_position(input)
+    filtered = input_filter(input)
+    array = []
+    hash = {}
+    filtered.split(" ").each_with_index{|word, index|
+
+    if hash.has_key?(word.downcase)
+      hash[word.downcase] << index
+    else
+      hash[word.downcase] = [index]
+    end
+  }
+
+    return hash
+  end
+
+  def analyzer_breakdown_count(input)
+    filtered = input_filter(input)
     array = filtered.split(" ").map {|word| word.downcase}
     hash = {}
     
@@ -139,12 +168,47 @@ helpers do
   def analyzer_breakdown_rhyme(hash)
     hash.each {|key, value| 
      result = Database.word_search(key)
-    #  hash[key][1] = result[2]
-    #  hash[key][2] = result[3]
+     #if word is in database, else return zeros
+     if result 
+        hash[key][1] = result[0][2]
+        hash[key][2] = result[0][3]
+     else
+        hash[key][1] = "0"
+        hash[key][2] = "0"
+     end
     }
+
     return hash
   end
-  
+
+  def word_proximity(input, word_hash, rhyme_hash, search_size)
+    filtered = input_filter(input)
+    potential = []
+    array = filtered.split(" ").map {|word| word.downcase}
+
+    array.each_with_index {|word, index|
+      rhyme_group = word_hash[word][1] 
+
+      if rhyme_group != "0"
+        (rhyme_hash[rhyme_group]).each{ |rhyme_word|
+          if word != rhyme_word
+            rhyme_positions = word_hash[rhyme_word][3]
+            proximity = []
+            rhyme_positions.each {|value|
+              proximity << (value - index)
+              if (value - index) < search_size && value > index
+                potential << [[word, index], [rhyme_word, value]]
+              end
+            }
+          end
+        }
+      end
+
+    }
+
+    return potential
+  end
+
   def rhyme_array(rhyme_group)
     result = ' '
     

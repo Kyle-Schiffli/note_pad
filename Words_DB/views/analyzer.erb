@@ -3,7 +3,7 @@
   <head>
     <title>Note Pad</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/stylesheets/note_pad.css">
+    <link rel="stylesheet" href="/stylesheets/note2.css">
   </head>
   <body>
    
@@ -13,6 +13,115 @@
   
   <input type="submit" value="Submit">
   </form>
+
+  <form action="/modify" method="post">
+  <input type="text" name="word" list="words" />
+  <datalist id="words" class="rhyme-select">
+    <% @rhyme_groups["0"].each do |word|%>
+    <option> <%= word %> </option>
+    <% end %>
+  </datalist>
+
+<div class="syllable-radios">
+  <input type="radio" name="syllable" value="1"> 1
+  <input type="radio" name="syllable" value="2"> 2
+  <input type="radio" name="syllable" value="3"> 3
+  <input type="radio" name="syllable" value="4"> 4
+</div>
+
+
+
+<div class="btn-single">
+  <input type="submit" name="rhyme" value="1">
+  <input type="submit" name="rhyme" value="2">
+  <input type="submit" name="rhyme" value="3">
+  <input type="submit" name="rhyme" value="4">
+  <input type="submit" name="rhyme" value="5">
+  <input type="submit" name="rhyme" value="6">
+  <input type="submit" name="rhyme" value="7">
+  <input type="submit" name="rhyme" value="8">
+  <input type="submit" name="rhyme" value="9">
+  <input type="submit" name="rhyme" value="10">
+  <br>
+  <input type="submit" name="rhyme" value="11">
+  <input type="submit" name="rhyme" value="12">
+  <input type="submit" name="rhyme" value="13">
+  <input type="submit" name="rhyme" value="14">
+  <input type="submit" name="rhyme" value="15">
+  <input type="submit" name="rhyme" value="16">
+  <input type="submit" name="rhyme" value="17">
+  <input type="submit" name="rhyme" value="18">
+  <input type="submit" name="rhyme" value="19">
+  <input type="submit" name="rhyme" value="20">
+  <br>
+  <input type="submit" name="rhyme" value="21">
+  <input type="submit" name="rhyme" value="22">
+  <input type="submit" name="rhyme" value="23">
+  <input type="submit" name="rhyme" value="24">
+  <input type="submit" name="rhyme" value="25">
+  <input type="submit" name="rhyme" value="26">
+  <input type="submit" name="rhyme" value="27">
+  <input type="submit" name="rhyme" value="28">
+  <input type="submit" name="rhyme" value="29">
+  <input type="submit" name="rhyme" value="30">
+  
+</div>
+</form>
+
+<div class="rhyme-groups">
+  <div class="cluster">
+    <p> 1. be, me </p>
+    <p> 2. in, been </p>
+    <p> 3. let, bet </p>
+    <p> 4. way, same</p>
+    <p> 5. that, tap </p>
+  </div>
+  <div class="cluster">
+    <p> 6. car, arm </p>
+    <p> 7. cry, hide </p>
+    <p> 8. now, down </p>
+    <p> 9. lock, bomb *?</p>
+    <p> 10. -none here </p>
+  </div>
+  <div class="cluster">
+    <p> 11. joy, coin </p>
+    <p> 12. home, vote </p>
+    <p> 13. cute, doom  </p>
+    <p> 14. hand, man </p>
+    <p> 15. good, should </p>
+  </div>
+  <div class="cluster">
+    <p> 16. bug, was </p>
+    <p> 17. bird, curse </p>
+    <p> 18. where, care</p>
+    <p> 19. call, fall </p>
+    <p> 20. well, held </p>
+  </div>
+  <div class="cluster">
+    <p> 21. floor, more </p>
+    <p> 22. </p>
+    <p> 23. </p>
+    <p> 24.  </p>
+    <p> 25.  </p>
+  </div>
+  <div class="cluster">
+    <p> ()</p>
+    <p> ( ?)</p>
+    <p> (hand, man?)</p>
+    <p>(?)</p>
+    <p> (crowd, loud?)</p>
+  </div>
+
+  <div class="cluster">
+  <p> (kill, still)</p>
+  <p> </p>
+  <p> </p>
+  <p></p>
+  <p> </p>
+</div>
+
+</div>
+  
    
   <div>
   <p> <%= @input%> </p>

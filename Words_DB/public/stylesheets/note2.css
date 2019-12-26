@@ -208,3 +208,18 @@ input{
    margin: unset;
    padding: unset;
  }
+
+ .btn-single input{
+  width: 3em;
+  height: 4em;
+  margin-bottom: 1em;
+}
+
+.rhyme-select{
+  margin-bottom: 1em;
+}
+
+.cluster{
+  display: inline-block;
+  margin-right: 2em;
+}

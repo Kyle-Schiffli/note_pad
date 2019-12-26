@@ -139,8 +139,8 @@ helpers do
 
   def analyzer_breakdwon_position(input)
     filtered = input_filter(input)
-    array = []
-    hash = {}
+   
+    
     filtered.split(" ").each_with_index{|word, index|
 
     if hash.has_key?(word.downcase)

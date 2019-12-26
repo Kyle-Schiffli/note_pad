@@ -97,6 +97,18 @@ post "/analyzer" do
   
   Database.execute(sql, input)
 
+
+#add to all song lyric text in database
+
+  sql = "SELECT * FROM analyzer WHERE id = 2"
+
+  all = Database.query(sql)
+  all = all.values.flatten[1] + " " + input
+  
+  sql = "UPDATE analyzer SET input_str = $1 WHERE id = 2"
+  
+  Database.execute(sql, all)
+
   redirect "/analyzer"
 end
 
@@ -121,7 +133,7 @@ post "/modify" do
   modify_word = params[:word]
   modify_rhyme = params[:rhyme]
   modify_syllable = params[:syllable]
-  
+
   if !Database.word_search(modify_word)
     Database.add_word(modify_word, modify_rhyme, modify_syllable)
     Database.delete_modifier(modify_word)
@@ -130,8 +142,8 @@ post "/modify" do
   end
   
   
-  
-  redirect "/word_search/#{modify_word}"
+  redirect "/analyzer"
+  #redirect "/word_search/#{modify_word}"
 end
 
 get "/word_search" do

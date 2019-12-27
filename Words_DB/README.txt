@@ -28,3 +28,6 @@ set up local machine - windows
 3. Bundle install
 4. create postgres db -  createdb words_app
 5. dump db from git -  psql words_app < words_app.bak
+
+
+save db  -  pg_dump words_app > words_app.bak

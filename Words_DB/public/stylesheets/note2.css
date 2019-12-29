@@ -202,7 +202,11 @@ input{
  ####### #   # # ####### #          #      #     #       #   #   
  #     # #    ## #     # #          #     #      #       #    #  
  #     # #     # #     # #######    #    ####### ####### #     # */
-                                                                 
+                                                 
+ .btn-div{
+   float: left;
+ }
+
  .analyzer ul {
    background-color: unset;
    margin: unset;

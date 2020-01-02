@@ -112,14 +112,23 @@ multiples.each {|k, v|
         }
     end
 }
-count = 0
-match_hash.each_key {|k|
+count = match_hash.keys.count
+current = 0
+random = match_hash.keys.shuffle
+random.each {|k|
 
 if match_hash[k][0][1] != match_hash[k][1]
-puts "#{k}  --- #{multiples[k].count} ---  #{match_hash[k]} "
-
+current += 1
+puts " "
+puts " "
+puts " "
 print "#{multiples[k]}"
 puts " "
+puts " "
+puts " "
+puts "#{k}  --- #{multiples[k].count} ---  #{match_hash[k]} "
+puts " "
+puts "#{current} of #{count}"
 puts " "
 puts " "
 puts " "
@@ -135,12 +144,13 @@ if user_response == 'add'
     multiples[k].each{|array|
     word = array[0]
     rhyme_change = match_hash[k][1]  
-    puts "changed #{word} to -- #{rhyme_change}"
+    puts "change #{word} to -- #{rhyme_change}"
+    sql = "UPDATE words SET rhyme = $1 WHERE word = $2"
+    @words.exec_params(sql, [rhyme_change, word]) 
 
-    # sql = "UPDATE words SET rhyme = $1 WHERE word = $2"
-    # @words.exec_params(sql, [rhyme_change, word]) 
 
 }
+
 end
 
 end

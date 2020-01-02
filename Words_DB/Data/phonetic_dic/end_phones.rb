@@ -49,10 +49,99 @@ phones_hash.each_key{|k|
     end
 }
 
+phone_rhyme = {}
+
 multiples.each_key{|k| 
-# if multiples[k].count > 100
-    puts "#{k} -- #{multiples[k]}"
-# end
+    multiples[k].each {|array|
+        word = array[0]
+        group = array[1]
+
+        if phone_rhyme[k] 
+            phone_rhyme[k] << group
+        else
+            phone_rhyme[k] = [group]
+        end
+        
+    }
+    #  puts "#{k} -- #{multiples[k]}"
+
+    # if phone_rhyme[k].uniq.count > 2
+    # puts "#{k} -- #{phone_rhyme[k].uniq}"
+    # end
+
+    if multiples[k].count > 2
+    #puts "#{k} -- #{multiples[k].count}  ---  #{multiples[k][0][0]} #{multiples[k][1][0]} #{multiples[k][2][0]} "
+    end
+
+}
+#  puts multiples.keys.count
+
+
+sql = "SELECT * FROM words WHERE phones != '' AND rhyme != '0'"
+rhymewords = @words.exec(sql)
+
+group_key= {}
+rhymewords.values.each {|array|
+ word = array[1]
+ rhyme = array[2]
+ split = array[4].split(" ")
+ phone = [split[-3], split[-2], split[-1]].join(" ")
+
+
+    if group_key[rhyme]
+        group_key[rhyme] << [phone, word]
+    else
+        group_key[rhyme] = [[phone, word]]
+    end
+
 }
 
-# puts multiples.keys.count
+match_hash = {}
+
+multiples.each {|k, v|
+    if v.count > 2
+        group_key.each {|rhyme, array|
+            array.each {|element|
+                rhyme_phone = element[0]
+                word = element[1]
+                if rhyme_phone.include?(k)
+                    match_hash[k] = [multiples[k][0], rhyme, word]
+                end
+
+            }
+        }
+    end
+}
+count = 0
+match_hash.each_key {|k|
+
+if match_hash[k][0][1] != match_hash[k][1]
+puts "#{k}  --- #{multiples[k].count} ---  #{match_hash[k]} "
+
+print "#{multiples[k]}"
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+puts "next?"
+user_response = gets.chomp
+
+if user_response == 'n'
+    break
+end
+
+if user_response == 'add'
+    multiples[k].each{|array|
+    word = array[0]
+    rhyme_change = match_hash[k][1]  
+    puts "changed #{word} to -- #{rhyme_change}"
+
+    # sql = "UPDATE words SET rhyme = $1 WHERE word = $2"
+    # @words.exec_params(sql, [rhyme_change, word]) 
+
+}
+end
+
+end
+}

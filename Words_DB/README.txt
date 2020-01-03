@@ -31,3 +31,5 @@ set up local machine - windows
 
 
 save db  -  pg_dump words_app > words_app.bak
+
+dropdb words_app

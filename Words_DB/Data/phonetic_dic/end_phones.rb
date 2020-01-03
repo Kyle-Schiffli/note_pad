@@ -117,7 +117,7 @@ current = 0
 random = match_hash.keys.shuffle
 random.each {|k|
 
-if match_hash[k][0][1] != match_hash[k][1]
+if match_hash[k][0][1] != match_hash[k][1] && k.count(' ') > 1  #delete last part for all phones not just 3
 current += 1
 puts " "
 puts " "
@@ -151,6 +151,24 @@ if user_response == 'add'
 
 }
 
+end
+
+if user_response == 'change'
+    numbers = Array(0..30).map{|v| v.to_s}
+    change_response = gets.chomp
+
+    if numbers.include?(change_response)
+        multiples[k].each{|array|
+        word = array[0]
+        rhyme_change = change_response 
+
+        puts "change #{word} to -- #{rhyme_change}"
+        sql = "UPDATE words SET rhyme = $1 WHERE word = $2"
+        @words.exec_params(sql, [rhyme_change, word]) 
+    }
+    else
+        puts "Did Not Change"
+    end
 end
 
 end

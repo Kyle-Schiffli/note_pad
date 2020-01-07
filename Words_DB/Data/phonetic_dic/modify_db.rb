@@ -17,19 +17,29 @@ allwords.values.each {|value|
 
 
 loop do
-puts "---- next? ----"
+puts "---- Options ----"
+puts "Search"
+puts "Quit: q"
 input = gets.chomp
 
-    if input == "quit"
+    if input == "q"
         break
     end
 
     if input == "search"
+        print "Word: "
         serach_word = gets.chomp
         sql = "SELECT * FROM words WHERE word = $1"
         search_result = @words.exec_params(sql, [serach_word]) 
         print search_result.values
+    end
 
+    if input == "rhyme"
+        print "Word: "
+        serach_word = gets.chomp
+        sql = "SELECT * FROM words WHERE word = $1"
+        search_result = @words.exec_params(sql, [serach_word]) 
+        print search_result.values
     end
 
 end

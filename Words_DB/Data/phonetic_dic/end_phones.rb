@@ -117,7 +117,7 @@ current = 0
 random = match_hash.keys.shuffle
 random.each {|k|
 
-if match_hash[k][0][1] != match_hash[k][1] && multiples[k].count > 50 && k.count(' ') > 1  #delete last part for all phones not just 3
+if match_hash[k][0][1] != match_hash[k][1] && multiples[k].count > 20 #delete last part for all phones not just 3
 current += 1
 puts " "
 puts " "

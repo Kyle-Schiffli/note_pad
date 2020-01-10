@@ -116,8 +116,12 @@ count = match_hash.keys.count
 current = 0
 random = match_hash.keys.shuffle
 random.each {|k|
+word_count = multiples[k].count
+zero_count = multiples[k].flatten.count("0")
+zeros = zero_count / word_count > 0.5
 
-if match_hash[k][0][1] != match_hash[k][1] && multiples[k].count > 20 #delete last part for all phones not just 3
+if match_hash[k][0][1] != match_hash[k][1] && multiples[k].count > 5 && zeros #delete last part for all phones not just 3
+
 current += 1
 puts " "
 puts " "

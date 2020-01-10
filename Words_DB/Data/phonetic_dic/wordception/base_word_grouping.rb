@@ -2,6 +2,7 @@ require 'pg'
 require 'pry'
 require 'yaml'
 
+# \S+\s\S+\s\S+$  regex for finding 3 end phones
 
 base_grouped = YAML.load_file('wordception.yaml')
 flat = base_grouped.values.flatten
